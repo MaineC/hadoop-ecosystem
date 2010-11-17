@@ -5,14 +5,18 @@ digraph HadoopEcosystem {
   MapReduce -> Avro [label="reads/writes data\nencoded with"];
   HBase -> HDFS [label="uses"];
   HBase -> ZooKeeper [label="uses"];
+  HBase -> Thrift [label="uses"];
+  Pig -> Cassandra [label="reads from/\nwrites to"];
   Pig -> HDFS [label="reads from/\nwrites to"];
   Pig -> HBase [label="reads from/\nwrites to"];
   Pig -> MapReduce [label="uses"];
   Pig -> Avro [label="reads/writes data\nencoded with*"];
+  Hive -> Cassandra [label="reads from/\nwrites to"];
   Hive -> HDFS [label="reads from/\nwrites to"];
   Hive -> HBase [label="reads from/\nwrites to"];
   Hive -> MapReduce [label="uses"];
   Hive -> ZooKeeper [label="uses*"];
+  Plume -> MapReduce [label="uses"];
   Sqoop -> HDFS [label="imports to/\nexports from"];
   Sqoop -> MapReduce [label="uses"];
   Sqoop -> HBase [label="imports to"];
@@ -26,6 +30,11 @@ digraph HadoopEcosystem {
   Oozie -> Pig [label="runs commands for"];
   Oozie -> Hive [label="runs commands for"];
   Oozie -> Sqoop [label="runs commands for"];
+  Cascading -> MapReduce  [label="runs jobs in"];
+  Cascading -> MapReduce [label="uses"];
+  katta -> HDFS [label="reads from/\nwrites to"];
+  katta -> Zookeeper [label="uses"];
+  Solr_Cloud -> Zookeeper [label="uses"];
   Whirr -> HDFS [label="launches"];
   Whirr -> MapReduce [label="launches"];
   Whirr -> ZooKeeper [label="launches"];
@@ -35,6 +44,7 @@ digraph HadoopEcosystem {
   Cascading -> HDFS [label="reads from/\nwrites to"];
   Cascading -> HBase [label="reads from/\nwrites to"];
   Cascading -> MapReduce [label="uses"];
+  Cascading -> Thrift [label="uses"];
 
   { rank=same; Oozie Whirr }
 
